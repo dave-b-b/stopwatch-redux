@@ -39,6 +39,11 @@ const Stopwatch = (props) => {
                 intervalId: null
             }));
         }
+        // This is a clean up function. This has to be returned as a callback
+        // If this isn't a callback, then it will only be called once and will not be called
+        // before and after a component renders
+        // If this were not a call back, it would execute before the timer finishes and
+        // So the timer would never get cancelled
         return () => {
             if (tempIntervalId) {
                 clearInterval(tempIntervalId);
